@@ -7,14 +7,8 @@ import {
   LightBulbIcon,
   ChartBarIcon,
 } from "@heroicons/react/24/outline";
-// import { useAuth } from "@/components/AuthProvider";
-// import { useState } from "react";
-// import LoginModal from "@/components/LoginModal";
 
 export default function Home() {
-  // const { isLoggedIn } = useAuth();
-
-  // const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   return (
     <div className="flex flex-col">
       <section className="flex flex-col items-center justify-center gap-4 py-8 px-6 md:py-10">
@@ -168,28 +162,15 @@ export default function Home() {
             Join thousands of professionals who are making better decisions with
             AI guidance.
           </p>
-          {isLoggedIn ? (
-            <Link
-              href="/guidance"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors whitespace-nowrap cursor-pointer"
-            >
-              Start Your Journey
-            </Link>
-          ) : (
-            <button
-              onClick={() => setIsLoginModalOpen(true)}
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors whitespace-nowrap cursor-pointer"
-            >
-              Get Started Today
-            </button>
-          )}
+          <Button
+            className="bg-white text-blue-600 px-8 py-7 text-lg font-semibold hover:bg-gray-100 transition-all duration-500 whitespace-nowrap cursor-pointer"
+            variant="flat"
+            radius="lg"
+          >
+            Get Started Today
+          </Button>
         </div>
       </section>
-
-      {/* <LoginModal
-        isModalOpen={isLoginModalOpen}
-        onModalClose={setIsLoginModalOpen(true)}
-      /> */}
     </div>
   );
 }

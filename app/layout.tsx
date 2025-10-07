@@ -1,14 +1,82 @@
+// import "@/styles/globals.css";
+// import { Metadata, Viewport } from "next";
+// import { Link } from "@heroui/link";
+// import clsx from "clsx";
+
+// import { Providers } from "./providers";
+
+// import { siteConfig } from "@/config/site";
+// import { fontSans } from "@/config/fonts";
+// import Nav from "@/components/navbar";
+// import AuthProvider from "@/components/AuthProvider";
+
+// export const metadata: Metadata = {
+//   title: {
+//     default: siteConfig.name,
+//     template: `%s - ${siteConfig.name}`,
+//   },
+//   description: siteConfig.description,
+//   icons: {
+//     icon: "/favicon.ico",
+//   },
+// };
+
+// export const viewport: Viewport = {
+//   themeColor: [
+//     { media: "(prefers-color-scheme: light)", color: "white" },
+//     { media: "(prefers-color-scheme: dark)", color: "black" },
+//   ],
+// };
+
+// export default function RootLayout({
+//   children,
+// }: {
+//   children: React.ReactNode;
+// }) {
+//   return (
+//     <html suppressHydrationWarning lang="en">
+//       <head />
+//       <body
+//         className={clsx(
+//           "min-h-screen text-foreground bg-background font-sans antialiased",
+//           fontSans.variable
+//         )}
+//       >
+//         <AuthProvider>
+//           <Providers>
+//             <div className="relative flex flex-col h-screen">
+//               <Nav />
+//               {/* max-w-7xl container mx-auto */}
+//               <main className="pt-16 flex-grow">{children}</main>
+
+//               <footer className="w-full flex items-center bg-primary justify-center py-3">
+//                 <Link
+//                   isExternal
+//                   className="flex items-center gap-1 text-current"
+//                   href="https://specshub.ng"
+//                   title="heroui.com homepage"
+//                 >
+//                   <span className="text-white">Powered by</span>
+//                   <p className="text-white">RightSpec</p>
+//                 </Link>
+//               </footer>
+//             </div>
+//           </Providers>
+//         </AuthProvider>
+//       </body>
+//     </html>
+//   );
+// }
+
+// app/layout.tsx
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
-import { Link } from "@heroui/link";
-import clsx from "clsx";
-
-import { Providers } from "./providers";
-
-import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import Nav from "@/components/navbar";
+import { siteConfig } from "@/config/site";
+import clsx from "clsx";
 import AuthProvider from "@/components/AuthProvider";
+import { Providers } from "./providers";
+import LayoutWrapper from "@/components/LayoutWrapper"; // NEW client wrapper
 
 export const metadata: Metadata = {
   title: {
@@ -35,7 +103,6 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en">
-      <head />
       <body
         className={clsx(
           "min-h-screen text-foreground bg-background font-sans antialiased",
@@ -44,22 +111,7 @@ export default function RootLayout({
       >
         <AuthProvider>
           <Providers>
-            <div className="relative flex flex-col h-screen">
-              <Nav />
-              {/* max-w-7xl container mx-auto */}
-              <main className="pt-16 flex-grow">{children}</main>
-              <footer className="w-full flex items-center bg-primary justify-center py-3">
-                <Link
-                  isExternal
-                  className="flex items-center gap-1 text-current"
-                  href="https://specshub.ng"
-                  title="heroui.com homepage"
-                >
-                  <span className="text-white">Powered by</span>
-                  <p className="text-white">RightSpec</p>
-                </Link>
-              </footer>
-            </div>
+            <LayoutWrapper>{children}</LayoutWrapper>
           </Providers>
         </AuthProvider>
       </body>

@@ -23,8 +23,8 @@ export default function Nav() {
     { name: "Home", href: "/" },
     { name: "AI Guidance", href: "/guidance" },
     { name: "Profile", href: "/profile" },
-    { name: "Login", href: "/login" },
-    { name: "Sign Up", href: "/signup" },
+    { name: "Login", href: "/auth/login" },
+    { name: "Sign Up", href: "/auth/signup" },
   ];
 
   const isActive = (href: string) => pathname === href;
@@ -75,9 +75,9 @@ export default function Nav() {
       <NavbarContent className="hidden sm:flex" justify="end">
         <NavbarItem>
           <Link
-            href="/login"
+            href="/auth/login"
             className={clsx("text-foreground", {
-              "text-primary font-semibold": isActive("/login"),
+              "text-primary font-semibold": isActive("/auth/login"),
             })}
           >
             Login
@@ -88,10 +88,10 @@ export default function Nav() {
           <Button
             as={Link}
             color="primary"
-            href="/signup"
+            href="/auth/signup"
             variant="flat"
             className={clsx({
-              "border border-primary": isActive("/signup"),
+              "border border-primary": isActive("/auth/signup"),
             })}
           >
             Sign Up
